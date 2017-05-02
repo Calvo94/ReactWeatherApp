@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(function(req,res,next){
   if(req.headers['x-forwarded-proto']==='https'){
-    console.log('https://' + req.hostname + req.url);
-    res.redirect('https://' + req.hostname + req.url);
+    console.log('https://' +  req.get('Host') + req.url);
+    res.redirect('https://' +  req.get('Host') + req.url);
   }
   else{
     next();
